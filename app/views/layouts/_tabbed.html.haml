@@ -1,13 +1,115 @@
-.tabs
-  %ul
-    - tabs.each do |tab|
-      %li
-        = link_to(tab[:url], class: tab[:active] ? "active" : nil) do
-          %i.fa{class: tab[:icon]}
-          = t(tab[:text])
+%header#topnav
+  %div.topbar-main
+    %div.container
+      %div.topbar-left
+        %a.logo
+          %i.zmdi.sszmdi-group-work.ssicon-c-logo
+          %span Uplon
+      %div.menu-extras.navbar-topbar
+        %ul.ist-inline.float-right.mb-0
+          %li.list-inline-item
+            %a.avbar-toggle
+              %div.lines
+                %span
+                %span
+                %span
+          %li.list-inline-item.dropdown.notification-list
+            %a.nav-link.dropdown-toggle.arrow-none.waves-light.waves-effect{:data-toggle=>'dropdown',:href=>"#",:role=>"button",:aria-haspopup=>"false",:aria-expanded=>"false"}
+              %i.zmdi.zmdi-notifications-none.noti-icon
+              %span.noti-icon-badge
+            %div.dropdown-menu.dropdown-menu-right.dropdown-arrow.dropdown-lg{:aria-labelledby=>"Preview"}
+              %div.dropdown-item.noti-title
+                %h5
+                  %small
+                    %span.badge.badge-danger.float-right
+              %a.dropdown-item.notify-item
+                %div.notify-icon.bg-success
+                  %i.icon-bubble
+                %p.notify-details
+                  %small.text-muted 1min ago
+              %a.dropdown-item.notify-item
+                %div.notify-icon.bg-info
+                  %i.icon-user
+                %p.notify-details
+                  %small.text-muted 1min ago
+              %a.dropdown-item.notify-item
+                %div.notify-icon.bg-danger
+                  %i.icon-like
+                %p.notify-details
+                  %b Admin
+                  %small.text-muted 1min ago
+              %a.dropdown-item.notify-item.notify-all View All
+          %li.list-inline-item.dropdown.notification-list
+            %a.nav-link.dropdown-toggle.arrow-none.waves-light.waves-effect{:data-toggle=>'dropdown',:href=>"#",:role=>"button",:aria-haspopup=>"false",:aria-expanded=>"false"}
+              %i.zmdi.zmdi-notifications-none.noti-icon
+              %span.noti-icon-badge
+            %div.dropdown-menu.dropdown-menu-right.dropdown-arrow.dropdown-lg{:aria-labelledby=>"Preview"}
+              %div.dropdown-item.noti-title
+                %h5
+                  %small
+                    %span.badge.badge-danger.float-right
+              %a.dropdown-item.notify-item
+                %div.notify-icon.bg-success
+                  %i.icon-bubble
+                %p.notify-details
+                  %small.text-muted 1min ago
+              %a.dropdown-item.notify-item
+                %div.notify-icon.bg-info
+                  %i.icon-user
+                %p.notify-details
+                  %small.text-muted 1min ago
+              %a.dropdown-item.notify-item
+                %div.notify-icon.bg-danger
+                  %i.icon-like
+                %p.notify-details
+                  %b Admin
+                  %small.text-muted 1min ago
+              %a.dropdown-item.notify-item.notify-all View All
+          %li.list-inline-item.dropdown.notification-list
+            %a.nav-link.waves-effect.waves-light.right-bar-toggle
+              %i.zmdi.zmdi-format-subject.noti-icon
+          %li.list-inline-item.dropdown.notification-list
+            %a.nav-link.dropdown-toggle.arrow-none.waves-light.waves-effect{:data-toggle=>'dropdown',:href=>"#",:role=>"button",:aria-haspopup=>"false",:aria-expanded=>"false"}
+              %i.zmdi.zmdi-notifications-none.noti-icon
+              %span.noti-icon-badge
+            %div.dropdown-menu.dropdown-menu-right.dropdown-arrow.dropdown-lg{:aria-labelledby=>"Preview"}
+              %div.dropdown-item.noti-title
+                %h5
+                  %small
+                    %span.badge.badge-danger.float-right
+              %a.dropdown-item.notify-item
+                %div.notify-icon.bg-success
+                  %i.icon-bubble
+                %p.notify-details
+                  %small.text-muted 1min ago
+              %a.dropdown-item.notify-item
+                %div.notify-icon.bg-info
+                  %i.icon-user
+                %p.notify-details
+                  %small.text-muted 1min ago
+              %a.dropdown-item.notify-item
+                %div.notify-icon.bg-danger
+                  %i.icon-like
+                %p.notify-details
+                  %b Admin
+                  %small.text-muted 1min ago
+              %a.dropdown-item.notify-item.notify-all View All
+      %div.clearfix
+  %div.navbar-custom
+    %div.container
+      %div#navigation
+        %ul.navigation-menu
+          - tabs.each do |tab|
+            %li{class: tab[:active] ? "active" : "has-submenu"}
+              =link_to(tab[:url]) do
+                %i.fa{class: tab[:icon]}
+                %span
+                = t(tab[:text])
+
+.tabs.wrapper
 
 = show_flash
-%table{ width: "100%", height: "100%", cellpadding: 0, cellspacing: 0, class: :tabbed }
+%table{ width: "100%", height: "100%", cellpadding: 0, cellspacing: 0, class: :tabbed}
   %tr
     %td{ class: :sidebar, id: :sidebar, valign: :top }
       = render "layouts/sidebar"
